@@ -5,15 +5,8 @@ var webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname),
-  // entry: './lib/index.js',
-  //
-  // output: {
-  //   path: 'lib',
-  //   publicPath: 'lib/',
-  //   filename: 'index.js'
-  // },
-
   entry: './src/index.js',
+
   output: {
     path: __dirname + '/lib',
     filename: 'index.js',
@@ -21,16 +14,20 @@ module.exports = {
     libraryTarget: 'umd'
   },
 
-  // plugins: [
-  //   new webpack.HotModuleReplacementPlugin(),
-  //   new webpack.NoErrorsPlugin(),
-  //   new webpack.ProvidePlugin({
-  //     $: "jquery",
-  //     jQuery: "jquery",
-  //     "window.jQuery": "jquery",
-  //     "root.jQuery": "jquery"
-  //   })
-  // ],
+  externals: {
+    'react': {
+      'commonjs': 'react',
+      'commonjs2': 'react',
+      'amd': 'React',
+      'root': 'React'
+    },
+    'select2': {
+      'commonjs': 'select2',
+      'commonjs2': 'select2',
+      'amd': 'Select2',
+      'root': 'Select2'
+    }
+  },
 
   module: {
     loaders: [
@@ -41,30 +38,6 @@ module.exports = {
         loader: 'babel'
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' }
-      // {
-      //   test: /\.scss$/,
-      //   loader: 'style!css!sass?outputStyle=expanded&'
-      //   + 'includePaths[]=' + (path.resolve(__dirname, './bower_components'))
-      //   + '&'
-      //   + 'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
-      // },
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: 'imports?_=lodash&$=jquery!jsx?harmony!babel-loader'
-      // },
-      // {
-      //   test: /\.(png|jpg|jpeg|gif)$/,
-      //   loader: "file-loader"
-      // },
-      // {
-      //   test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      //   loader: "url-loader?limit=10000&minetype=application/font-woff"
-      // },
-      // {
-      //   test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      //   loader: "file-loader"
-      // }
     ]
   }
 };
