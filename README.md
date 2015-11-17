@@ -6,15 +6,15 @@ I decided to build a new package with some React form components, easy to plug, 
 
 ## What do we have here?
 
-[x] Checkbox
-[x] DateTime
-[x] Radio
-[x] Select
-[x] Text
-[x] Table
-[x] Icon (from font-awesome)
-[x] Simple loader
-[x] Pagination links
+* [x] Checkbox
+* [x] DateTime
+* [x] Radio
+* [x] Select
+* [x] Text
+* [x] Table
+* [x] Icon (from font-awesome)
+* [x] Simple loader
+* [x] Pagination links
 
 ## Show me the code
 
