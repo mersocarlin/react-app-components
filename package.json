@@ -5,11 +5,7 @@
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
     "build-css": "node-sass src/styles/main.scss lib/css/react-app-components.css",
-    "clean": "rm -rf lib/ && rm -rf ../lojavirtual-admin-app/node_modules/react-app-components/lib && rm -rf ../musitech-app/node_modules/react-app-components/lib",
-    "compile": "npm run clean && npm run build-css && babel -d lib/ src/ && npm run copy-lib1 && npm run copy-lib2",
-    "compile1": "npm run clean && npm run build-css && babel -d lib/ src/",
-    "copy-lib1": "cp -R lib ../lojavirtual-admin-app/node_modules/react-app-components/lib && cp package.json ../lojavirtual-admin-app/node_modules/react-app-components",
-    "copy-lib2": "cp -R lib ../musitech-app/node_modules/react-app-components/lib && cp package.json ../musitech-app/node_modules/react-app-components"
+    "compile": "npm run build-css && babel -d lib/ src/"
   },
   "main": "lib/index.js",
   "repository": {
