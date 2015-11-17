@@ -1,7 +1,7 @@
 import 'select2';
 
 /* package stylesheet */
-import './css/react-app-components.css';
+//import './css/react-app-components.css';
 
 /* JS Plugins */
 import './styles/plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
