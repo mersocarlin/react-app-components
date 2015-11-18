@@ -56,7 +56,6 @@ export default React.createClass({
   },
 
   render () {
-    console.log("props", this.props)
     return (
       <DateTimePicker
         ref="datetime"
@@ -64,16 +63,6 @@ export default React.createClass({
         locale={this.props.language}
         mode="date"
         onChange={this.onChange} />
-    );
-
-    return (
-      <div className={`datetime-component`}>
-        <input
-          ref="datetime"
-          type="text"
-          className="form-control"
-          disabled={this.props.disabled} />
-      </div>
     );
   }
 
