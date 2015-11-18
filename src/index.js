@@ -3,9 +3,6 @@ import 'select2';
 /* package stylesheet */
 //import './css/react-app-components.css';
 
-/* JS Plugins */
-import './styles/plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
-
 /* Input components */
 export Checkbox from './components/input/checkbox';
 export DateTime from './components/input/datetime';
@@ -32,6 +29,5 @@ export HR from './components/hr';
 export I from './components/i';
 export Loader from './components/loader';
 export Pagination from './components/pagination';
-
 
 export default {}

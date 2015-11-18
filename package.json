@@ -25,6 +25,7 @@
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
+    "react-bootstrap-datetimepicker": "0.0.22",
     "select2": "^4.0.0"
   },
   "devDependencies": {
