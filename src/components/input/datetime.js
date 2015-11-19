@@ -57,12 +57,14 @@ export default React.createClass({
 
   render () {
     return (
-      <DateTimePicker
-        ref="datetime"
-        inputFormat={this.props.dateFormat}
-        locale={this.props.language}
-        mode="date"
-        onChange={this.onChange} />
+      <div className="datetime-component">
+        <DateTimePicker
+          ref="datetime"
+          inputFormat={this.props.dateFormat}
+          locale={this.props.language}
+          mode="date"
+          onChange={this.onChange} />
+      </div>
     );
   }
 

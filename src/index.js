@@ -1,4 +1,5 @@
 /* stylesheet */
+import 'react-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css';
 import 'react-select/dist/react-select.css';
 import './styles/main.scss';
 
