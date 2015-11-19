@@ -13,10 +13,6 @@
 @import './mixins';
 //@import './fonts';
 
-/* JS Plugins */
-@import './plugins/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.scss';
-@import '../../node_modules/select2/src/scss/core';
-
 /* Input components */
 @import './components/input/datetime';
 @import './components/input/form-group';
