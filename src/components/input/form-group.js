@@ -95,7 +95,7 @@ export default React.createClass({
             enableSearch={field.enableSearch === "1"}
             includeIfEmpty={field.includeIfEmpty}
             items={field.items}
-            multiple={field.multiple}
+            multi={field.multi}
             onChange={this.onChange}
             value={this.props.value} />
         );

@@ -1,7 +1,6 @@
-import 'select2';
-
 /* package stylesheet */
 //import './css/react-app-components.css';
+import 'react-select/dist/react-select.css';
 
 /* Input components */
 export Checkbox from './components/input/checkbox';

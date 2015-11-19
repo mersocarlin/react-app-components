@@ -20,12 +20,6 @@ module.exports = {
       'commonjs2': 'react',
       'amd': 'React',
       'root': 'React'
-    },
-    'select2': {
-      'commonjs': 'select2',
-      'commonjs2': 'select2',
-      'amd': 'Select2',
-      'root': 'Select2'
     }
   },
 
