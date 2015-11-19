@@ -92,7 +92,7 @@ export default React.createClass({
             ref="inputField"
             ajax={field.ajax}
             ajaxUrl={field.ajaxUrl}
-            enableSearch={field.enableSearch === "1"}
+            enableSearch={parseInt(field.enableSearch) === 1}
             includeIfEmpty={field.includeIfEmpty}
             items={field.items}
             multi={field.multi}

@@ -73,19 +73,12 @@ export default React.createClass({
   },
 
   render () {
-    const options = this.props.items.map(item => {
-      return {
-        value: item.id,
-        label: item.text
-      }
-    });
-
     return (
       <Select
         ref="select"
         clearable={false}
         multi={this.props.multi}
-        options={options}
+        options={this.props.items}
         onChange={this.onChange}
         searchable={this.props.enableSearch}
         value={this.props.value}
