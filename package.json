@@ -4,7 +4,9 @@
   "description": "react-app-components",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
-    "compile": "./node_modules/.bin/webpack --config webpack.config.js"
+    "compile": "./node_modules/.bin/webpack --config webpack.config.js",
+    "dev-examples": "./node_modules/.bin/webpack-dev-server --inline --hot --config webpack.examples.config.js",
+    "build-examples": "./node_modules/.bin/webpack --config webpack.examples.config.js -p"
   },
   "main": "lib/index.js",
   "repository": {
@@ -31,15 +33,21 @@
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
+    "bootstrap": "^3.3.5",
     "css-loader": "^0.23.0",
     "eslint": "^1.9.0",
     "eslint-config-airbnb": "^1.0.0",
+    "file-loader": "^0.8.5",
+    "history": "^1.13.1",
     "node-sass": "^3.4.2",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-router": "^1.0.0",
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.6"
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.6",
+    "webpack-dev-server": "^1.12.1"
   },
   "license": "MIT"
 }
