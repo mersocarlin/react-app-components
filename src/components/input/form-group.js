@@ -39,7 +39,7 @@ export default React.createClass({
   onInputChange (text) {
     if (!this.props.onInputChange) return;
 
-    this.props.onInputChange(text);
+    this.props.onInputChange(this.props.field, text);
   },
 
   onKeyUp (event) {
