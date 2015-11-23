@@ -5,13 +5,11 @@ import Select from 'react-select';
 export default React.createClass({
 
   propTypes: {
-    ajax          : React.PropTypes.bool,
-    ajaxUrl       : React.PropTypes.string,
-    includeIfEmpty: React.PropTypes.bool,
-    items         : React.PropTypes.array,
     enableSearch  : React.PropTypes.bool,
+    items         : React.PropTypes.array,
     multi         : React.PropTypes.bool,
     onChange      : React.PropTypes.func,
+    onInputChange : React.PropTypes.func,
     value         : React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number,
@@ -22,10 +20,9 @@ export default React.createClass({
 
   getDefaultProps () {
     return {
-      ajax          : false,
-      includeIfEmpty: false,
-      items         : [],
       enableSearch  : true,
+      items         : [],
+      multi         : false,
       value         : null
     }
   },
@@ -72,18 +69,25 @@ export default React.createClass({
     this.props.onChange(value, text);
   },
 
+  onInputChange (text) {
+    if (!this.props.onInputChange) return;
+
+    this.props.onInputChange(text[0]);
+  },
+
   render () {
-    return (
-      <Select
-        ref="select"
-        clearable={false}
-        multi={this.props.multi}
-        options={this.props.items}
-        onChange={this.onChange}
-        searchable={this.props.enableSearch}
-        value={this.props.value}
-      />
-    );
+    const opts = {
+      ref: "select",
+      clearable: false,
+      multi: this.props.multi,
+      onChange: this.props.onChange,
+      onInputChange: this.props.onInputChange,
+      options: this.props.items,
+      searchable: this.props.enableSearch,
+      value: this.props.value
+    };
+
+    return <Select {...opts} />;
   }
 
 });
