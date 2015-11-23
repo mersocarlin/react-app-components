@@ -12,7 +12,7 @@ I decided to build a new package with some React form components, easy to plug, 
 * [x] Select
 * [x] Text
 * [x] Table
-* [x] Icon (from font-awesome)
+* [x] Icon (font-awesome)
 * [x] Simple loader
 * [x] Pagination links
 
@@ -78,10 +78,17 @@ export default React.createClass({
   },
 
   renderFormElements () {
-    const items = [0,1,2,3,4].map(id => {
+    const items = [0,1,2].map(id => {
       return {
         id: id,
         text: `Item ${id}`
+      }
+    });
+
+    const selectItems = [0,1,2,3,4,5,6,7,8].map(id => {
+      return {
+        value: id,
+        label: `Item ${id}`
       }
     });
 
@@ -92,7 +99,7 @@ export default React.createClass({
           text="Check me if you can" />
 
         <DateTime
-          value="01/01/2015"
+          value="25/05/2015"
           onChange={this.onChange} />
 
         <Radio
@@ -102,14 +109,11 @@ export default React.createClass({
           value={2} />
 
         <Select
-          ajax={false}
-          ajaxUrl=""
           enableSearch={false}
-          includeIfEmpty={false}
-          items={items}
-          multiple={false}
+          items={selectItems}
+          multi={true}
           onChange={this.onChange}
-          value={4} />
+          value={[2,3]} />
 
         <Text
           ref="inputField"
