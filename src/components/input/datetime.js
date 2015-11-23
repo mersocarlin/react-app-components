@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 import momentLocale from 'moment/locale/pt-br';
+import DateTimePicker from 'react-bootstrap-datetimepicker';
 
 
 export default React.createClass({
@@ -29,53 +30,40 @@ export default React.createClass({
 
   getInitialState () {
     return {
-      value: null
+      value: this.props.value ? moment(this.props.value, "YYYY-MM-DDTHH:mm:ssZ").toDate() : new Date()
     }
   },
 
   componentDidMount () {
-    const $el = $(ReactDOM.findDOMNode(this.refs.datetime));
-
-    $el.datetimepicker({
-      format: this.props.dateFormat
-    });
-
-    $el.on("dp.hide", () => {
-      this.refs.datetime.blur();
-    });
-
-    $el.on("dp.change", () => {
-      if(!this.props.onChange) return;
-
-      this.props.onChange(this.getValue());
-    });
-
     moment.locale(this.props.language);
     moment.locale(this.props.language, {
       weekdaysMin : moment.weekdaysShort()
     });
+  },
 
-    if (!this.props.value) return;
+  onChange (value) {
+    if (!this.props.onChange) return;
 
-    const date = moment(this.props.value, "YYYY-MM-DDTHH:mm:ssZ").toDate();
-    $el.data("DateTimePicker").defaultDate(date);
+    const date = moment(value, "YYYY-MM-DDTHH:mm:ssZ").toDate();
+    this.props.onChange(date);
   },
 
   getValue () {
-    const $el = $(ReactDOM.findDOMNode(this.refs.datetime));
+    const value = this.refs.datetime.getValue();
+    const date = value ? moment(value, "YYYY-MM-DDTHH:mm:ssZ").toDate() : null;
 
-    const date = $el.data("DateTimePicker").date();
-    return date ? moment(date, this.props.dateFormat).toJSON() : null;
+    return date;
   },
 
   render () {
     return (
-      <div className={`datetime-component`}>
-        <input
+      <div className="datetime-component">
+        <DateTimePicker
           ref="datetime"
-          type="text"
-          className="form-control"
-          disabled={this.props.disabled} />
+          inputFormat={this.props.dateFormat}
+          locale={this.props.language}
+          mode="date"
+          onChange={this.onChange} />
       </div>
     );
   }

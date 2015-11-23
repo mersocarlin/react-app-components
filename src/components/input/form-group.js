@@ -12,12 +12,13 @@ import Text from './text';
 export default React.createClass({
 
   propTypes: {
-    disabled: React.PropTypes.bool,
-    field   : React.PropTypes.object,
-    hasError: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    onKeyUp : React.PropTypes.func,
-    value   : React.PropTypes.oneOfType([
+    disabled     : React.PropTypes.bool,
+    field        : React.PropTypes.object,
+    hasError     : React.PropTypes.bool,
+    onChange     : React.PropTypes.func,
+    onInputChange: React.PropTypes.func,
+    onKeyUp      : React.PropTypes.func,
+    value        : React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number,
       React.PropTypes.object,
@@ -33,6 +34,12 @@ export default React.createClass({
     if (!this.props.onChange) return;
 
     this.props.onChange(this.props.field, value, text);
+  },
+
+  onInputChange (text) {
+    if (!this.props.onInputChange) return;
+
+    this.props.onInputChange(this.props.field, text);
   },
 
   onKeyUp (event) {
@@ -90,13 +97,11 @@ export default React.createClass({
         return (
           <Select
             ref="inputField"
-            ajax={field.ajax}
-            ajaxUrl={field.ajaxUrl}
-            enableSearch={field.enableSearch === "1"}
-            includeIfEmpty={field.includeIfEmpty}
+            enableSearch={parseInt(field.enableSearch) === 1}
             items={field.items}
-            multiple={field.multiple}
+            multi={field.multi}
             onChange={this.onChange}
+            onInputChange={this.onInputChange}
             value={this.props.value} />
         );
       default:
