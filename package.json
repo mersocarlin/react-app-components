@@ -4,8 +4,6 @@
   "description": "react-app-components",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
-    "build-css": "node-sass src/styles/main.scss lib/css/react-app-components.css",
-    "compile1": "npm run build-css && ./node_modules/.bin/babel -d lib/ src/ --presets es2015,react",
     "compile": "./node_modules/.bin/webpack --config webpack.config.js"
   },
   "main": "lib/index.js",
