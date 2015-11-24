@@ -96,7 +96,7 @@ export default React.createClass({
       <div className="row">
         <Checkbox
           checked={true}
-          text="Check me if you can" />
+          text="Check me" />
 
         <DateTime
           value="25/05/2015"
