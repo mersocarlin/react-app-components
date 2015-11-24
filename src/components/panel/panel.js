@@ -26,14 +26,14 @@ export default React.createClass({
       <div className="panel-heading">
         <span className="panel-title">
           <span className={`fa fa-${this.props.headerIcon}`}></span>
-          {this.props.headerText}
+          <span>&nbsp;{this.props.headerText}</span>
         </span>
       </div>
     );
   },
 
   render () {
-    const panelCssClass = `panel panel-component ${this.props.cssClass}`;
+    const panelCssClass = `panel panel-default panel-component ${this.props.cssClass}`;
 
     return (
       <div className={panelCssClass}>

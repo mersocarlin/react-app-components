@@ -1,0 +1,81 @@
+.checkbox-component {
+  background-color: transparent;
+  color: inherit;
+
+  input {
+    display: none;
+  }
+
+  input[type=checkbox]:checked + label:after,
+  input[type=radio]:checked + label:after {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f00c";
+    font-size: 12px;
+    top: 4px;
+    left: 4px;
+    width: 0;
+    height: 0;
+    transform: rotate(-13deg);
+  }
+
+  label {
+    cursor: pointer;
+    position: relative;
+    padding-left: 32px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+
+    &:empty {
+      padding-left: 10px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 22px;
+      height: 21px;
+      background-color: #FFF;
+      border: 1px solid #666;
+      border-width: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  &.fill {
+    label {
+      cursor: pointer;
+      position: relative;
+      padding-left: 32px;
+      margin-right: 15px;
+      margin-bottom: 5px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 2px;
+        width: 22px;
+        height: 21px;
+        background-color: #666;
+      }
+    }
+
+    input[type=checkbox]:checked + label:after,
+    input[type=radio]:checked + label:after {
+      position: absolute;
+      font-family: "FontAwesome";
+      content: "\f00c";
+      font-size: 12px;
+      top: 3px;
+      left: 3px;
+      width: 0;
+      height: 0;
+      color: #fff !important;
+      transform: rotate(-13deg);
+    }
+  }
+}
