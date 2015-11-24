@@ -59,7 +59,7 @@ export default React.createClass({
         {
           this.props.items.map((item, index) => {
             let opts = { name: this.props.name };
-            if(item.id === this.state.selectedItem.id) {
+            if (item.id === this.state.selectedItem.id) {
               opts.checked = true;
             }
 
