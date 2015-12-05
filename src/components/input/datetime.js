@@ -34,7 +34,7 @@ export default React.createClass({
 
   getInitialState () {
     return {
-      value: moment(this.props.value || new Date(), "YYYY-MM-DDTHH:mm:ssZ").toDate()
+      value: this.props.value || new Date()
     }
   },
 
@@ -44,13 +44,25 @@ export default React.createClass({
       weekdaysMin : moment.weekdaysShort()
     });
 
+    this.disabledInput();
     this.replaceCalendarIcon();
   },
 
-  replaceCalendarIcon () {
-    if (this.disabled) return;
+  disabledInput () {
+    if (this.props.disabled) return;
 
-    var $elIcon = $(".datetime-component .input-group.date .input-group-addon span");
+    const $elInput = $(".datetime-component .input-group.date .form-control");
+    if (!$elInput.length) return;
+
+    $elInput.attr({
+      "disabled": "disabled"
+    });
+  },
+
+  replaceCalendarIcon () {
+    if (this.props.disabled) return;
+
+    const $elIcon = $(".datetime-component .input-group.date .input-group-addon span");
     if (!$elIcon.length) return;
 
     $elIcon
@@ -58,22 +70,28 @@ export default React.createClass({
       .addClass("fa fa-fw fa-calendar");
   },
 
+  parseValue (value) {
+    const date = value ? moment(value, this.props.dateFormat).toDate() : null;
+
+    return date;
+  },
+
   onChange (value) {
     if (!this.props.onChange) return;
 
-    const date = moment(value, "YYYY-MM-DDTHH:mm:ssZ").toDate();
+    const date = this.parseValue(value);
     this.props.onChange(date);
   },
 
   getValue () {
     const value = this.refs.datetime.getValue();
-    const date = value ? moment(value, "YYYY-MM-DDTHH:mm:ssZ").toDate() : null;
+    const date = this.parseValue(value);
 
     return date;
   },
 
   renderDisabled () {
-    const value = moment(value).format(this.props.dateFormat);
+    const value = moment(this.state.value).format(this.props.dateFormat);
 
     return (
       <InputGroup
@@ -90,6 +108,8 @@ export default React.createClass({
 
     const opts = {
       ref: "datetime",
+      dateTime: moment(this.state.value).format(this.props.dateFormat),
+      format: this.props.dateFormat,
       inputFormat: this.props.dateFormat,
       locale: this.props.language,
       mode: "date"

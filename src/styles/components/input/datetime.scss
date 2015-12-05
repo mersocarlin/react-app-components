@@ -5,6 +5,8 @@
   }
 
   input {
+    background-color: #fff !important;
+
     @include border-top-left-radius(4px !important);
     @include border-bottom-left-radius(4px !important);
   }
