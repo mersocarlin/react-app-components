@@ -34,7 +34,7 @@ export default React.createClass({
 
   getInitialState () {
     return {
-      value: this.props.value || new Date()
+      value: this.props.value
     }
   },
 
@@ -85,13 +85,17 @@ export default React.createClass({
 
   getValue () {
     const value = this.refs.datetime.getValue();
-    const date = this.parseValue(value);
 
+    if (value === "Invalid date") {
+      return null;
+    }
+
+    const date = this.parseValue(value);
     return date;
   },
 
   renderDisabled () {
-    const value = moment(this.state.value).format(this.props.dateFormat);
+    const value = value ?  moment(this.state.value).format(this.props.dateFormat) : "";
 
     return (
       <InputGroup
@@ -109,10 +113,12 @@ export default React.createClass({
     const opts = {
       ref: "datetime",
       dateTime: moment(this.state.value).format(this.props.dateFormat),
+      defaultText: "",
       format: this.props.dateFormat,
       inputFormat: this.props.dateFormat,
       locale: this.props.language,
-      mode: "date"
+      mode: "date",
+      onChange: this.onChange
     };
 
     return (
