@@ -87,7 +87,11 @@ export default React.createClass({
       value: this.props.value
     };
 
-    return <Select {...opts} />;
+    return (
+      <div className="select-component">
+        <Select {...opts} />
+      </div>
+    );
   }
 
 });
