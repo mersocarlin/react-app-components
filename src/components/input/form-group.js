@@ -97,6 +97,7 @@ export default React.createClass({
         return (
           <Select
             ref="inputField"
+            disabled={field.disabled}
             enableSearch={parseInt(field.enableSearch) === 1}
             items={field.items}
             multi={field.multi}

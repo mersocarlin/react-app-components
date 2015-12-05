@@ -5,6 +5,7 @@ import Select from 'react-select';
 export default React.createClass({
 
   propTypes: {
+    disabled      : React.PropTypes.bool,
     enableSearch  : React.PropTypes.bool,
     items         : React.PropTypes.array,
     multi         : React.PropTypes.bool,
@@ -79,6 +80,7 @@ export default React.createClass({
     const opts = {
       ref: "select",
       clearable: false,
+      disabled: this.props.disabled,
       multi: this.props.multi,
       onChange: this.props.onChange,
       onInputChange: this.props.onInputChange,
