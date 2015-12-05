@@ -7,6 +7,10 @@ import momentLocale from 'moment/locale/pt-br';
 import DateTimePicker from 'react-bootstrap-datetimepicker';
 
 
+import InputGroup from './input-group';
+import Text from './text';
+
+
 export default React.createClass({
 
   propTypes: {
@@ -30,7 +34,7 @@ export default React.createClass({
 
   getInitialState () {
     return {
-      value: this.props.value ? moment(this.props.value, "YYYY-MM-DDTHH:mm:ssZ").toDate() : new Date()
+      value: moment(this.props.value || new Date(), "YYYY-MM-DDTHH:mm:ssZ").toDate()
     }
   },
 
@@ -39,6 +43,19 @@ export default React.createClass({
     moment.locale(this.props.language, {
       weekdaysMin : moment.weekdaysShort()
     });
+
+    this.replaceCalendarIcon();
+  },
+
+  replaceCalendarIcon () {
+    if (this.disabled) return;
+
+    var $elIcon = $(".datetime-component .input-group.date .input-group-addon span");
+    if (!$elIcon.length) return;
+
+    $elIcon
+      .removeClass("glyphicon glyphicon-calendar")
+      .addClass("fa fa-fw fa-calendar");
   },
 
   onChange (value) {
@@ -55,15 +72,32 @@ export default React.createClass({
     return date;
   },
 
+  renderDisabled () {
+    const value = moment(value).format(this.props.dateFormat);
+
+    return (
+      <InputGroup
+        rightIcon="calendar">
+        <Text ref="datetime" disabled={true} type="text" value={value} />
+      </InputGroup>
+    );
+  },
+
   render () {
+    if (this.props.disabled) {
+      return this.renderDisabled();
+    }
+
+    const opts = {
+      ref: "datetime",
+      inputFormat: this.props.dateFormat,
+      locale: this.props.language,
+      mode: "date"
+    };
+
     return (
       <div className="datetime-component">
-        <DateTimePicker
-          ref="datetime"
-          inputFormat={this.props.dateFormat}
-          locale={this.props.language}
-          mode="date"
-          onChange={this.onChange} />
+        <DateTimePicker {...opts} />
       </div>
     );
   }

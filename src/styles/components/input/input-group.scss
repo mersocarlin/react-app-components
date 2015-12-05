@@ -4,8 +4,8 @@
     background-color: #fff;
 
     i {
-      color: #bbb;
-      font-size: 1.3em;
+      color: $input-group-addon-color;
+      font-size: $input-group-addon-font-size;
     }
   }
 }
