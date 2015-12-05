@@ -11,6 +11,7 @@ export default React.createClass({
     multi         : React.PropTypes.bool,
     onChange      : React.PropTypes.func,
     onInputChange : React.PropTypes.func,
+    placeholder   : React.PropTypes.string,
     value         : React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number,
@@ -24,6 +25,7 @@ export default React.createClass({
       enableSearch  : true,
       items         : [],
       multi         : false,
+      placeholder   : "Select...",
       value         : null
     }
   },
@@ -85,6 +87,7 @@ export default React.createClass({
       onChange: this.props.onChange,
       onInputChange: this.props.onInputChange,
       options: this.props.items,
+      placeholder: this.props.placeholder,
       searchable: this.props.enableSearch,
       value: this.props.value
     };

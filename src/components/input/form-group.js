@@ -103,6 +103,7 @@ export default React.createClass({
             multi={field.multi}
             onChange={this.onChange}
             onInputChange={this.onInputChange}
+            placeholder={field.placeholder}
             value={this.props.value} />
         );
       default:
