@@ -77,9 +77,12 @@ export default React.createClass({
   },
 
   onChange (value) {
+    const date = this.parseValue(value);
+
+    this.setState({ value: date })
+
     if (!this.props.onChange) return;
 
-    const date = this.parseValue(value);
     this.props.onChange(date);
   },
 
