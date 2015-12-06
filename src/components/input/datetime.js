@@ -95,7 +95,7 @@ export default React.createClass({
   },
 
   renderDisabled () {
-    const value = value ?  moment(this.state.value).format(this.props.dateFormat) : "";
+    const value = this.state.value ?  moment(this.state.value).format(this.props.dateFormat) : "";
 
     return (
       <InputGroup
@@ -112,14 +112,21 @@ export default React.createClass({
 
     const opts = {
       ref: "datetime",
-      dateTime: moment(this.state.value).format(this.props.dateFormat),
-      defaultText: "",
       format: this.props.dateFormat,
       inputFormat: this.props.dateFormat,
       locale: this.props.language,
       mode: "date",
       onChange: this.onChange
     };
+
+    const value = this.state.value ? moment(this.state.value).format(this.props.dateFormat) : "";
+    if (value) {
+      opts.dateTime = value;
+    }
+    else {
+      opts.dateTime = "";
+      opts.defaultText = "";
+    }
 
     return (
       <div className="datetime-component">
