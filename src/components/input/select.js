@@ -5,57 +5,29 @@ import Select from 'react-select';
 export default React.createClass({
 
   propTypes: {
-    disabled      : React.PropTypes.bool,
-    enableSearch  : React.PropTypes.bool,
-    items         : React.PropTypes.array,
-    multi         : React.PropTypes.bool,
-    onChange      : React.PropTypes.func,
-    onInputChange : React.PropTypes.func,
-    placeholder   : React.PropTypes.string,
-    value         : React.PropTypes.oneOfType([
+    disabled: React.PropTypes.bool,
+    enableSearch: React.PropTypes.bool,
+    items: React.PropTypes.array,
+    multi: React.PropTypes.bool,
+    onChange: React.PropTypes.func,
+    onInputChange: React.PropTypes.func,
+    placeholder: React.PropTypes.string,
+    value: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number,
       React.PropTypes.object,
-      React.PropTypes.array
+      React.PropTypes.array,
     ]),
   },
 
   getDefaultProps () {
     return {
-      enableSearch  : true,
-      items         : [],
-      multi         : false,
-      placeholder   : "Select...",
-      value         : null
-    }
-  },
-
-  getValue () {
-    const value = this.refs.select.state.value;
-
-    if (this.props.multi) {
-      return value.split(",");
-    }
-
-    return value;
-  },
-
-  getText () {
-    const value = this.refs.select.state.values;
-
-    if (!value) return "";
-
-    if (this.props.multi) {
-      return value.map(val => {
-        return val.label
-      }).join(", ");
-    }
-
-    return value[0].label;
-  },
-
-  clear () {
-    this.refs.select.clearValue();
+      enableSearch: true,
+      items: [],
+      multi: false,
+      placeholder: 'Select...',
+      value: null,
+    };
   },
 
   onChange (val, arr) {
@@ -63,10 +35,10 @@ export default React.createClass({
     if (!val) return this.props.onChange(null, null);
 
     let value = val;
-    let text = arr ? arr[0].label : "";
+    const text = arr ? arr[0].label : '';
 
     if (this.props.multi) {
-      value = val.split(",");
+      value = val.split(',');
     }
 
     this.props.onChange(value, text);
@@ -78,9 +50,37 @@ export default React.createClass({
     this.props.onInputChange(text[0]);
   },
 
+  getValue () {
+    const value = this.refs.select.state.value;
+
+    if (this.props.multi) {
+      return value.split(',');
+    }
+
+    return value;
+  },
+
+  getText () {
+    const value = this.refs.select.state.values;
+
+    if (!value) return '';
+
+    if (this.props.multi) {
+      return value.map(val => {
+        return val.label;
+      }).join(', ');
+    }
+
+    return value[0].label;
+  },
+
+  clear () {
+    this.refs.select.clearValue();
+  },
+
   render () {
     const opts = {
-      ref: "select",
+      ref: 'select',
       clearable: false,
       disabled: this.props.disabled,
       multi: this.props.multi,
@@ -89,7 +89,7 @@ export default React.createClass({
       options: this.props.items,
       placeholder: this.props.placeholder,
       searchable: this.props.enableSearch,
-      value: this.props.value
+      value: this.props.value,
     };
 
     return (
@@ -97,6 +97,6 @@ export default React.createClass({
         <Select {...opts} />
       </div>
     );
-  }
+  },
 
 });

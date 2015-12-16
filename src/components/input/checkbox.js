@@ -6,30 +6,30 @@ export default React.createClass({
   propTypes: {
     checked: React.PropTypes.oneOfType([
       React.PropTypes.bool,
-      React.PropTypes.number
+      React.PropTypes.number,
     ]),
-    text   : React.PropTypes.string
+    text: React.PropTypes.string,
   },
 
   getInitialState () {
     return {
-      checked: this.props.checked
-    }
-  },
-
-  getValue () {
-    return this.state.checked;
+      checked: this.props.checked,
+    };
   },
 
   onClick () {
     this.setState({ checked: !this.state.checked });
   },
 
+  getValue () {
+    return this.state.checked;
+  },
+
   render () {
     const opts = {
-      type: "radio",
+      type: 'radio',
       checked: this.state.checked,
-      onChange: () => {}
+      onChange: () => {},
     };
 
     return (
@@ -38,6 +38,6 @@ export default React.createClass({
         <label>{this.props.text}</label>
       </div>
     );
-  }
+  },
 
 });

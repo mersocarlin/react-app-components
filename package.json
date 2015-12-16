@@ -4,9 +4,10 @@
   "description": "react-app-components",
   "author": "Hemerson Carlin <mersocarlin@gmail.com>",
   "scripts": {
-    "compile": "./node_modules/.bin/webpack --config webpack.config.js",
+    "compile": "npm run test && ./node_modules/.bin/webpack --config webpack.config.js",
     "dev-examples": "./node_modules/.bin/webpack-dev-server --inline --hot --config webpack.examples.config.js",
-    "build-examples": "./node_modules/.bin/webpack --config webpack.examples.config.js -p"
+    "build-examples": "npm run test && ./node_modules/.bin/webpack --config webpack.examples.config.js -p",
+    "test": "./node_modules/.bin/eslint src/ examples/"
   },
   "main": "lib/index.js",
   "repository": {
@@ -29,14 +30,18 @@
     "react-select": "^0.9.1"
   },
   "devDependencies": {
+    "babel-core": "^6.3.17",
+    "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
-    "babel-preset-stage-0": "^6.1.18",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
     "bootstrap": "^3.3.5",
     "css-loader": "^0.23.0",
-    "eslint": "^1.9.0",
-    "eslint-config-airbnb": "^1.0.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.0",
+    "eslint-plugin-react": "^3.11.3",
     "file-loader": "^0.8.5",
     "history": "^1.13.1",
     "node-sass": "^3.4.2",

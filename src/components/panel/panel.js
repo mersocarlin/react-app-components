@@ -4,16 +4,16 @@ import React from 'react';
 export default React.createClass({
 
   propTypes: {
-    cssClass  : React.PropTypes.string,
+    cssClass: React.PropTypes.string,
     headerIcon: React.PropTypes.string,
-    headerText: React.PropTypes.string
+    headerText: React.PropTypes.string,
   },
 
   getDefaultProps () {
     return {
-      cssClass  : "",
-      headerIcon: "",
-      headerText: ""
+      cssClass: '',
+      headerIcon: '',
+      headerText: '',
     };
   },
 
@@ -41,6 +41,6 @@ export default React.createClass({
         {this.props.children}
       </div>
     );
-  }
+  },
 
 });

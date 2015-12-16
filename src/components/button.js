@@ -8,15 +8,15 @@ export default React.createClass({
 
   propTypes: {
     cssClass: React.PropTypes.string,
-    icon    : React.PropTypes.string,
-    onClick : React.PropTypes.func,
-    text    : React.PropTypes.string
+    icon: React.PropTypes.string,
+    onClick: React.PropTypes.func,
+    text: React.PropTypes.string,
   },
 
   getDefaultProps () {
     return {
-      cssClass: "default"
-    }
+      cssClass: 'default',
+    };
   },
 
   onClick () {
@@ -27,14 +27,15 @@ export default React.createClass({
 
   render () {
     let icon;
-    if (this.props.icon)
-      icon = <I icon={this.props.icon} />
+    if (this.props.icon) {
+      icon = <I icon={this.props.icon} />;
+    }
 
     return (
       <button className={`btn btn-${this.props.cssClass}`} type="button" onClick={this.onClick}>
         {icon} {this.props.text}
       </button>
     );
-  }
+  },
 
 });

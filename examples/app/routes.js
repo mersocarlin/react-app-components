@@ -7,8 +7,8 @@ import App from './containers/app';
 import Samples from './containers/samples';
 
 
-let history = createHistory({
-  queryKey: false
+const history = createHistory({
+  queryKey: false,
 });
 
 

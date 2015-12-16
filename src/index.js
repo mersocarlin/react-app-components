@@ -30,4 +30,4 @@ export I from './components/i';
 export Loader from './components/loader';
 export Pagination from './components/pagination';
 
-export default {}
+export default {};

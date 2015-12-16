@@ -8,22 +8,22 @@ import TableRow from './table-row';
 export default React.createClass({
 
   propTypes: {
-    cols          : React.PropTypes.array,
-    data          : React.PropTypes.array,
+    cols: React.PropTypes.array,
+    data: React.PropTypes.array,
     emptyTableText: React.PropTypes.string,
-    limit         : React.PropTypes.number,
-    offset        : React.PropTypes.number,
-    onRowClick    : React.PropTypes.func
+    limit: React.PropTypes.number,
+    offset: React.PropTypes.number,
+    onRowClick: React.PropTypes.func,
   },
 
   getDefaultProps () {
     return {
-      cols          : [],
-      data          : [],
-      emptyTableText: "No results.",
-      limit         : -1,
-      offset        : -1
-    }
+      cols: [],
+      data: [],
+      emptyTableText: 'No results.',
+      limit: -1,
+      offset: -1,
+    };
   },
 
   onRowClick (data) {
@@ -33,30 +33,39 @@ export default React.createClass({
 
   renderHeader () {
     return this.props.cols.map((col, index) => {
-      return <TableHeader
-              key={index}
-              headerCssClass={col.headerCssClass}
-              dataCssClass={col.dataCssClass ? col.dataCssClass : "text-center"}
-              text={col.text} />;
+      return (
+        <TableHeader
+          key={index}
+          headerCssClass={col.headerCssClass}
+          dataCssClass={col.dataCssClass ? col.dataCssClass : 'text-center'}
+          text={col.text}
+        />
+      );
     });
   },
 
   renderRows () {
     if (this.props.limit === -1 || this.props.offset === -1) {
       return this.props.data.map((data, index) => {
-        let rowData = [];
+        const rowData = [];
 
         this.props.cols.map(col => {
           rowData.push({
-            cssClass: col.dataCssClass ? col.dataCssClass : "text-center",
+            cssClass: col.dataCssClass ? col.dataCssClass : 'text-center',
             html: col.html,
-            text: data[col.field]
+            text: data[col.field],
           });
         });
 
-        return <TableRow data={data} rowData={rowData} key={index} onRowClick={this.onRowClick} />;
+        return (
+          <TableRow
+            data={data}
+            rowData={rowData}
+            key={index}
+            onRowClick={this.onRowClick}
+          />
+        );
       });
-      return;
     }
 
     const initialPos = (this.props.offset - 1) * this.props.limit;
@@ -65,24 +74,24 @@ export default React.createClass({
       finalPos = this.props.data.length;
     }
 
-    let components = [];
+    const components = [];
     for (let i = initialPos; i < finalPos; i++) {
-      let rowData = [];
+      const rowData = [];
 
       this.props.cols.map(col => {
         rowData.push({
-          cssClass: col.dataCssClass ? col.dataCssClass : "text-center",
+          cssClass: col.dataCssClass ? col.dataCssClass : 'text-center',
           html: col.html,
-          text: this.props.data[i][col.field]
+          text: this.props.data[i][col.field],
         });
       });
       components.push(<TableRow data={this.props.data[i]} rowData={rowData} onRowClick={this.onRowClick} />);
     }
 
-    return {components};
+    return { components };
   },
 
-  render() {
+  render () {
     if (!this.props.data || this.props.data.length === 0) {
       return (
         <div className="empty-table">
@@ -93,7 +102,7 @@ export default React.createClass({
       );
     }
 
-    const tableCssClass = `table-responsive table-component ${this.props.onRowClick ? "table-clickable" : ""}`;
+    const tableCssClass = `table-responsive table-component ${this.props.onRowClick ? 'table-clickable' : ''}`;
 
     return (
       <div className={tableCssClass}>
@@ -109,6 +118,6 @@ export default React.createClass({
         </table>
       </div>
     );
-  }
+  },
 
 });

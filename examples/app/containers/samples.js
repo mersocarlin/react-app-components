@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '../../../src/components/button';
 import Checkbox from '../../../src/components/input/checkbox';
 import DateTime from '../../../src/components/input/datetime';
-import FormGroup from '../../../src/components/input/form-group';
 import Panel from '../../../src/components/panel/panel';
 import Radio from '../../../src/components/input/radio';
 import Select from '../../../src/components/input/select';
@@ -19,48 +18,53 @@ export default React.createClass({
         <Button
           icon="times"
           onClick={this.onClick}
-          text="Default button" />
+          text="Default button"
+        />
 
         <Button
           cssClass="primary"
           icon="user"
           onClick={this.onClick}
-          text="Primary button" />
+          text="Primary button"
+        />
 
         <Button
           cssClass="warning"
           icon="bank"
           onClick={this.onClick}
-          text="Warning button" />
+          text="Warning button"
+        />
 
         <Button
           cssClass="info"
           icon="car"
           onClick={this.onClick}
-          text="Info button" />
+          text="Info button"
+        />
 
         <Button
           cssClass="danger"
           icon="bug"
           onClick={this.onClick}
-          text="Danger button" />
+          text="Danger button"
+        />
       </div>
     );
   },
 
   renderFormElements () {
     const genderItems = [
-      { id: 0, text: "Female" },
-      { id: 1, text: "Male" }
+      { id: 0, text: 'Female' },
+      { id: 1, text: 'Male' },
     ];
 
     const selectItems = [
-      { value: 0, label: "Australia" },
-      { value: 1, label: "Brazil" },
-      { value: 2, label: "Canada" },
-      { value: 3, label: "Italy" },
-      { value: 4, label: "United Kingdom" },
-      { value: 5, label: "United States" }
+      { value: 0, label: 'Australia' },
+      { value: 1, label: 'Brazil' },
+      { value: 2, label: 'Canada' },
+      { value: 3, label: 'Italy' },
+      { value: 4, label: 'United Kingdom' },
+      { value: 5, label: 'United States' },
     ];
 
     return (
@@ -69,14 +73,16 @@ export default React.createClass({
           <div className="col-xs-6">
             <Checkbox
               checked={true}
-              text="Active" />
+              text="Active"
+            />
           </div>
           <div className="col-xs-6">
             <Radio
               items={genderItems}
               onChange={this.onChange}
               orientation="horizontal"
-              value={2} />
+              value={2}
+            />
           </div>
         </div>
 
@@ -89,7 +95,8 @@ export default React.createClass({
               placeholder="First name"
               type="text"
               uppercase={false}
-              value="" />
+              value=""
+            />
           </div>
           <div className="col-xs-6">
             <Text
@@ -99,7 +106,8 @@ export default React.createClass({
               placeholder="Last name"
               type="text"
               uppercase={false}
-              value="" />
+              value=""
+            />
           </div>
         </div>
 
@@ -107,7 +115,8 @@ export default React.createClass({
           <div className="col-xs-4">
             <DateTime
               value="25/05/2015"
-              onChange={this.onChange} />
+              onChange={this.onChange}
+            />
           </div>
           <div className="col-xs-4">
             <Text
@@ -117,7 +126,8 @@ export default React.createClass({
               placeholder="Age"
               type="text"
               uppercase={false}
-              value="" />
+              value=""
+            />
           </div>
           <div className="col-xs-4">
           </div>
@@ -132,7 +142,8 @@ export default React.createClass({
               placeholder="Address"
               type="text"
               uppercase={false}
-              value="" />
+              value=""
+            />
           </div>
         </div>
 
@@ -143,7 +154,7 @@ export default React.createClass({
               items={selectItems}
               multi={false}
               onChange={this.onChange}
-               />
+            />
           </div>
         </div>
       </div>
@@ -152,16 +163,16 @@ export default React.createClass({
 
   renderTable () {
     const columns = [
-      { headerCssClass: "text-center", dataCssClass: "text-left",   text: "Name",  field: "name" },
-      { headerCssClass: "text-center", dataCssClass: "text-center", text: "Email", field: "email" }
+      { headerCssClass: 'text-center', dataCssClass: 'text-left', text: 'Name', field: 'name' },
+      { headerCssClass: 'text-center', dataCssClass: 'text-center', text: 'Email', field: 'email' },
     ];
 
-    const tableData = [0,1,2,3,4,5].map(id => {
+    const tableData = [0, 1, 2, 3, 4, 5].map(id => {
       return {
-        id: id,
+        id,
         name: `Item ${id}`,
-        email: `item${id}@mail.com`
-      }
+        email: `item${id}@mail.com`,
+      };
     });
 
     return <Table cols={columns} data={tableData} onRowClick={this.onRowClick} />;
@@ -197,6 +208,6 @@ export default React.createClass({
         </div>
       </div>
     );
-  }
+  },
 
 });

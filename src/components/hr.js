@@ -7,6 +7,6 @@ export default React.createClass({
     return (
       <hr className="alt short" />
     );
-  }
+  },
 
 });
