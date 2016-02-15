@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../../../src/components/button';
 import Checkbox from '../../../src/components/input/checkbox';
-import DateTime from '../../../src/components/input/datetime';
+import DatePicker from '../../../src/components/input/datepicker';
 import Panel from '../../../src/components/panel/panel';
 import Radio from '../../../src/components/input/radio';
 import Select from '../../../src/components/input/select';
@@ -113,8 +113,8 @@ export default React.createClass({
 
         <div className="row">
           <div className="col-xs-4">
-            <DateTime
-              value="25/05/2015"
+            <DatePicker
+              value={new Date()}
               onChange={this.onChange}
             />
           </div>

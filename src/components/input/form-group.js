@@ -2,7 +2,6 @@ import React from 'react';
 
 
 import Checkbox from './checkbox';
-import DateTime from './datetime';
 import DatePicker from './datepicker';
 import InputGroup from './input-group';
 import Radio from './radio';
@@ -81,15 +80,6 @@ export default React.createClass({
       case 'date':
         return (
           <DatePicker
-            ref="inputField"
-            value={this.props.value}
-            disabled={this.props.disabled}
-            onChange={this.onChange}
-          />
-        );
-      case 'date1':
-        return (
-          <DateTime
             ref="inputField"
             value={this.props.value}
             disabled={this.props.disabled}
