@@ -7,6 +7,8 @@
  *
  * Copyright (c) 2015 Hemerson Carlin
  */
+ $fa-font-path: '~font-awesome/fonts';
+ @import "~font-awesome/scss/font-awesome";
 
 /* Config */
 @import './variables';
@@ -14,7 +16,8 @@
 //@import './fonts';
 
 /* Input components */
-@import './components/input/datetime';
+@import './components/input/checkbox';
+@import './components/input/datepicker';
 @import './components/input/form-group';
 @import './components/input/input-group';
 @import './components/input/radio';

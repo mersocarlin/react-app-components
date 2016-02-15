@@ -1,0 +1,19 @@
+.datepicker-dropdown.dropdown-menu {
+  table {
+    font-size: 13px;
+  }
+}
+
+.datepicker-component {
+  input {
+    background-color: #fff !important;
+
+    @include border-top-left-radius(4px !important);
+    @include border-bottom-left-radius(4px !important);
+  }
+
+  .input-group-addon > span {
+    color: $input-group-addon-color;
+    font-size: $input-group-addon-font-size;
+  }
+}

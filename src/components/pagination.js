@@ -4,10 +4,10 @@ import React from 'react';
 export default React.createClass({
 
   propTypes: {
-    currentPage : React.PropTypes.number,
+    currentPage: React.PropTypes.number,
     itemsPerPage: React.PropTypes.number,
-    totalItems  : React.PropTypes.number,
-    onPageClick : React.PropTypes.func
+    totalItems: React.PropTypes.number,
+    onPageClick: React.PropTypes.func,
   },
 
   getDefaultProps () {
@@ -23,7 +23,7 @@ export default React.createClass({
 
   renderPaginationItem (page, active) {
     return (
-      <li key={page} className={`${active ? "active" : ""}`}>
+      <li key={page} className={`${active ? 'active' : ''}`}>
         <a onClick={this.onPageClick.bind(this, page)}>{page}</a>
       </li>
     );
@@ -31,7 +31,7 @@ export default React.createClass({
 
   render () {
     const totalPages = Math.ceil(this.props.totalItems / this.props.itemsPerPage);
-    let pageItems = [];
+    const pageItems = [];
 
     if (totalPages > 1) {
       for (let i = 1; i <= totalPages; i++) {
@@ -39,7 +39,7 @@ export default React.createClass({
       }
     }
 
-    let pageInfo = "";
+    let pageInfo = '';
     if (this.props.totalItems > 0) {
       const initialPosition = (this.props.currentPage - 1) * this.props.itemsPerPage + 1;
       let finalPosition = initialPosition + this.props.itemsPerPage;
@@ -63,6 +63,6 @@ export default React.createClass({
         </div>
       </div>
     );
-  }
+  },
 
 });

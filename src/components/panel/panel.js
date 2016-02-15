@@ -4,16 +4,16 @@ import React from 'react';
 export default React.createClass({
 
   propTypes: {
-    cssClass  : React.PropTypes.string,
+    cssClass: React.PropTypes.string,
     headerIcon: React.PropTypes.string,
-    headerText: React.PropTypes.string
+    headerText: React.PropTypes.string,
   },
 
   getDefaultProps () {
     return {
-      cssClass  : "",
-      headerIcon: "",
-      headerText: ""
+      cssClass: '',
+      headerIcon: '',
+      headerText: '',
     };
   },
 
@@ -26,14 +26,14 @@ export default React.createClass({
       <div className="panel-heading">
         <span className="panel-title">
           <span className={`fa fa-${this.props.headerIcon}`}></span>
-          {this.props.headerText}
+          <span>&nbsp;{this.props.headerText}</span>
         </span>
       </div>
     );
   },
 
   render () {
-    const panelCssClass = `panel panel-component ${this.props.cssClass}`;
+    const panelCssClass = `panel panel-default panel-component ${this.props.cssClass}`;
 
     return (
       <div className={panelCssClass}>
@@ -41,6 +41,6 @@ export default React.createClass({
         {this.props.children}
       </div>
     );
-  }
+  },
 
 });

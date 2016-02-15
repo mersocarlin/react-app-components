@@ -3,15 +3,9 @@ import React from 'react';
 
 export default React.createClass({
 
-  propTypes: { },
-
-  getDefaultProps () {
-    return { };
-  },
-
   render () {
     return (
-      <div className="panel-footer clearfix">
+      <div className="react-app-components">
         {this.props.children}
       </div>
     );

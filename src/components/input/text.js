@@ -4,33 +4,59 @@ import React from 'react';
 export default React.createClass({
 
   propTypes: {
-    disabled   : React.PropTypes.bool,
-    number     : React.PropTypes.bool,
-    onChange   : React.PropTypes.func,
-    onKeyUp    : React.PropTypes.func,
+    disabled: React.PropTypes.bool,
+    number: React.PropTypes.bool,
+    onChange: React.PropTypes.func,
+    onKeyUp: React.PropTypes.func,
     placeholder: React.PropTypes.string,
-    type       : React.PropTypes.string,
-    uppercase  : React.PropTypes.bool,
-    value      : React.PropTypes.oneOfType([
+    type: React.PropTypes.string,
+    uppercase: React.PropTypes.bool,
+    value: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number,
-      React.PropTypes.object
-    ])
+      React.PropTypes.object,
+    ]),
   },
 
   getDefaultProps () {
     return {
-      disabled : false,
-      number   : false,
-      type     : "text",
-      uppercase: true
-    }
+      disabled: false,
+      number: false,
+      type: 'text',
+      uppercase: true,
+    };
   },
 
   getInitialState () {
     return {
-      value: this.props.value
+      value: this.props.value,
+    };
+  },
+
+  onChange (event) {
+    let text = event.target.value;
+
+    if (this.props.number) {
+      const numberPattern = /\d+/g;
+      const match = text.match(numberPattern);
+
+      text = '';
+      if (match) {
+        text = match.join('');
+      }
     }
+
+    this.setState({ value: text });
+
+    if (!this.props.onChange) return;
+
+    this.props.onChange(text);
+  },
+
+  onKeyUp (event) {
+    if (!this.props.onKeyUp) return;
+
+    this.props.onKeyUp(event);
   },
 
   getValue () {
@@ -48,48 +74,22 @@ export default React.createClass({
     return this.state.value;
   },
 
-  onChange (event) {
-    let text = event.target.value;
-
-    if (this.props.number) {
-      const numberPattern = /\d+/g;
-      const match = text.match(numberPattern);
-
-      text = "";
-      if (match) {
-        text = match.join("");
-      }
-    }
-
-    this.setState({ value: text });
-
-    if (!this.props.onChange) return;
-
-    this.props.onChange(text);
-  },
-
-  onKeyUp (event) {
-    if (!this.props.onKeyUp) return;
-
-    this.props.onKeyUp(event);
-  },
-
   render () {
-    let opts = {
+    const opts = {
       type: this.props.type,
       placeholder: this.props.placeholder,
-      value: this.state.value
+      value: this.state.value,
     };
 
     if (this.props.disabled) {
       opts.disabled = this.props.disabled;
     }
 
-    const inputCssClass = `text-component form-control ${this.props.uppercase ? "uppercase" : ""}`;
+    const inputCssClass = `text-component form-control ${this.props.uppercase ? 'uppercase' : ''}`;
 
     return (
       <input ref="inputText" className={inputCssClass} {...opts} onChange={this.onChange} onKeyUp={this.onKeyUp} />
     );
-  }
+  },
 
 });

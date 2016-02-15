@@ -2,7 +2,7 @@ import React from 'react';
 
 
 import Checkbox from './checkbox';
-import DateTime from './datetime';
+import DatePicker from './datepicker';
 import InputGroup from './input-group';
 import Radio from './radio';
 import Select from './select';
@@ -12,22 +12,18 @@ import Text from './text';
 export default React.createClass({
 
   propTypes: {
-    disabled     : React.PropTypes.bool,
-    field        : React.PropTypes.object,
-    hasError     : React.PropTypes.bool,
-    onChange     : React.PropTypes.func,
+    disabled: React.PropTypes.bool,
+    field: React.PropTypes.object,
+    hasError: React.PropTypes.bool,
+    onChange: React.PropTypes.func,
     onInputChange: React.PropTypes.func,
-    onKeyUp      : React.PropTypes.func,
-    value        : React.PropTypes.oneOfType([
+    onKeyUp: React.PropTypes.func,
+    value: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number,
       React.PropTypes.object,
-      React.PropTypes.array
+      React.PropTypes.array,
     ]),
-  },
-
-  getValue () {
-    return this.refs.inputField.getValue();
   },
 
   onChange (value, text) {
@@ -48,6 +44,10 @@ export default React.createClass({
     this.props.onKeyUp(this.props.field, event);
   },
 
+  getValue () {
+    return this.refs.inputField.getValue();
+  },
+
   renderInputGroup () {
     const inputGroup = this.props.field.inputGroup;
 
@@ -58,7 +58,8 @@ export default React.createClass({
         onLeftClick={inputGroup.onLeftClick}
         rightIcon={inputGroup.rightIcon}
         rightText={inputGroup.rightText}
-        onRightClick={inputGroup.onRightClick}>
+        onRightClick={inputGroup.onRightClick}
+      >
         {this.renderInput()}
       </InputGroup>
     );
@@ -68,22 +69,24 @@ export default React.createClass({
     const field = this.props.field;
 
     switch (field.type) {
-      case "checkbox":
+      case 'checkbox':
         return (
           <Checkbox
             ref="inputField"
             checked={this.props.value}
-            text={field.label} />
+            text={field.label}
+          />
         );
-      case "date":
+      case 'date':
         return (
-          <DateTime
+          <DatePicker
             ref="inputField"
             value={this.props.value}
             disabled={this.props.disabled}
-            onChange={this.onChange} />
+            onChange={this.onChange}
+          />
         );
-      case "radio":
+      case 'radio':
         return (
           <Radio
             ref="inputField"
@@ -91,18 +94,22 @@ export default React.createClass({
             items={field.items}
             onChange={this.onChange}
             orientation={field.orientation}
-            value={this.props.value} />
+            value={this.props.value}
+          />
         );
-      case "select":
+      case 'select':
         return (
           <Select
             ref="inputField"
-            enableSearch={parseInt(field.enableSearch) === 1}
+            disabled={field.disabled}
+            enableSearch={parseInt(field.enableSearch, 10) === 1}
             items={field.items}
             multi={field.multi}
             onChange={this.onChange}
             onInputChange={this.onInputChange}
-            value={this.props.value} />
+            placeholder={field.placeholder}
+            value={this.props.value}
+          />
         );
       default:
         return (
@@ -116,18 +123,19 @@ export default React.createClass({
             placeholder={field.placeholder}
             type={field.type}
             uppercase={field.uppercase}
-            value={this.props.value} />
+            value={this.props.value}
+          />
         );
     }
   },
 
   render () {
     let labelComponent;
-    if (this.props.field.type !== "checkbox" &&  this.props.field.label) {
+    if (this.props.field.type !== 'checkbox' && this.props.field.label) {
       labelComponent = <label className="control-label">{this.props.field.label}</label>;
     }
 
-    const cssClass = `form-group-component form-group ${this.props.hasError? "has-error" : ""} ${this.props.field.type === "radio" ? "clearfix" : ""}`;
+    const cssClass = `form-group-component form-group ${this.props.hasError ? 'has-error' : ''} ${this.props.field.type === 'radio' ? 'clearfix' : ''}`;
 
     return (
       <div className={cssClass}>
@@ -136,6 +144,6 @@ export default React.createClass({
         {!this.props.field.inputGroup && this.renderInput()}
       </div>
     );
-  }
+  },
 
 });
