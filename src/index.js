@@ -1,11 +1,10 @@
 /* stylesheet */
-import 'react-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css';
 import 'react-select/dist/react-select.css';
 import './styles/main.scss';
 
 /* Input components */
 export Checkbox from './components/input/checkbox';
-export DateTime from './components/input/datetime';
+export DatePicker from './components/input/datepicker';
 export FormFields from './components/input/form-fields';
 export FormGroup from './components/input/form-group';
 export InputGroup from './components/input/input-group';

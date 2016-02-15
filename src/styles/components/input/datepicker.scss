@@ -1,9 +1,10 @@
-
-.datetime-component {
-  .bootstrap-datetimepicker-widget table {
-    font-size: 13px
+.datepicker-dropdown.dropdown-menu {
+  table {
+    font-size: 13px;
   }
+}
 
+.datepicker-component {
   input {
     background-color: #fff !important;
 
@@ -15,8 +16,4 @@
     color: $input-group-addon-color;
     font-size: $input-group-addon-font-size;
   }
-}
-
-.bootstrap-datetimepicker-widget.dropdown-menu {
-  width: 20em;
 }

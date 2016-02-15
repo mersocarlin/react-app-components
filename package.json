@@ -23,10 +23,10 @@
     "es6"
   ],
   "dependencies": {
+    "bootstrap-datepicker": "^1.6.0",
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
-    "react-bootstrap-datetimepicker": "0.0.22",
     "react-select": "^0.9.1"
   },
   "devDependencies": {
