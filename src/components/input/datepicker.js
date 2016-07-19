@@ -49,7 +49,8 @@ export default class Datepicker extends Component {
   }
 
   getValue () {
-    return $(this.refs.input).datepicker('getDate');
+    const date = $(this.refs.input).datepicker('getDate');
+    return `${moment(date).format('YYYY-MM-DD')}`;
   }
 
   updateValue (value) {
