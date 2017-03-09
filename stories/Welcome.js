@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { storiesOf, linkTo } from '@kadira/storybook'
 
 const styles = {
   main: {
@@ -32,12 +33,12 @@ const styles = {
   note: {
     opacity: 0.5,
   }
-};
+}
 
-export default class Welcome extends React.Component {
+class Welcome extends React.Component {
   showApp(e) {
-    e.preventDefault();
-    if(this.props.showApp) this.props.showApp();
+    e.preventDefault()
+    if(this.props.showApp) this.props.showApp()
   }
 
   render() {
@@ -77,6 +78,13 @@ export default class Welcome extends React.Component {
           loaders and plugins you are using in this project.
         </p>
       </div>
-    );
+    )
   }
+}
+
+export default () => {
+  storiesOf('Welcome', module)
+    .add('to Storybook', () => (
+      <Welcome showApp={linkTo('Button')} />
+    ))
 }

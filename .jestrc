@@ -1,0 +1,10 @@
+{
+	"testRegex": "(<rootDir>/test/.*|)\\.spec\\.jsx?$",
+  "moduleNameMapper": {
+		"\\.(txt)": "<rootDir>/jest/fileTransformer.js"
+  },
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
+  "collectCoverageFrom": ["src/**/*.js"],
+  "coverageReporters": ["cobertura", "lcov", "text-summary"],
+	"coverageDirectory": "<rootDir>/coverage"
+}
