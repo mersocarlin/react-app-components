@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
-import { compose, withHandlers } from 'recompose'
 
 const Input = ({ onChange, type, ...rest }) => (
   <input
-    onChange={onChange}
+    onChange={ev => onChange && onChange(ev.target.value, ev)}
     type={type}
     {...rest}
   />
@@ -14,14 +13,4 @@ Input.propTypes = {
   type: PropTypes.oneOf(['number', 'password', 'radio', 'text', 'url']),
 }
 
-export default compose(
-  withHandlers({
-    onChange: ({ onChange }) => (ev) => {
-      if (!onChange) {
-        return
-      }
-
-      onChange(ev.target.value, ev)
-    },
-  }),
-)(Input)
+export default Input
