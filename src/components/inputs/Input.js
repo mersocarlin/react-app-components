@@ -11,7 +11,7 @@ const Input = ({ onChange, type, ...rest }) => (
 
 Input.propTypes = {
   onChange: PropTypes.func,
-  type: PropTypes.oneOf(['number', 'password', 'text', 'url']),
+  type: PropTypes.oneOf(['number', 'password', 'radio', 'text', 'url']),
 }
 
 export default compose(
