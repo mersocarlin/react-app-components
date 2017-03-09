@@ -11,7 +11,7 @@ const TextWithState = compose(
     <Text
       {...props}
       value={value}
-      onChange={(newValue) => setValue(newValue)}
+      onChange={newValue => setValue(newValue)}
     />
   )
 )
