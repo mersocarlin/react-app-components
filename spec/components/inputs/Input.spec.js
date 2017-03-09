@@ -4,19 +4,19 @@ import { shallow } from 'enzyme'
 import { Input } from '../../../src'
 
 describe('Input', () => {
-  const wrapper = (props = {}) => (
-    shallow(<Input {...props} />)
-  )
+  let component
+
+  beforeEach(() => {
+    component = shallow(<Input type="text" />)
+  })
 
   it('should render default Input component', () => {
-    const component = wrapper({ type: 'text' })
-
     expect(component).not.toBeNull()
     expect(component.html()).toBe('<input type="text"/>')
   })
 
   it('should render an input with given props', () => {
-    const component = wrapper({
+    component.setProps({
       className: 'form-control',
       disabled: true,
       placeholder: 'Name',
@@ -31,7 +31,10 @@ describe('Input', () => {
 
   it('should handle onChange event', () => {
     const handleChange = jest.fn()
-    const component = wrapper({ onChange: handleChange })
+
+    component.setProps({
+      onChange: handleChange,
+    })
 
     expect(handleChange).not.toHaveBeenCalled()
     component.simulate('change', { target: { value: '123' } })
@@ -40,7 +43,10 @@ describe('Input', () => {
 
   it('should handle onKeyUp event', () => {
     const handleKeyUp = jest.fn()
-    const component = wrapper({ onKeyUp: handleKeyUp })
+
+    component.setProps({
+      onKeyUp: handleKeyUp,
+    })
 
     expect(handleKeyUp).not.toHaveBeenCalled()
     component.simulate('keyUp', { keyCode: 13 })
