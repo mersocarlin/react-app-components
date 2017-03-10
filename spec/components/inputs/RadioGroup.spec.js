@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 
 import { Radio, RadioGroup } from '../../../src'
 
-describe('Radio', () => {
+describe('RadioGroup', () => {
   let component
 
   beforeEach(() => {
