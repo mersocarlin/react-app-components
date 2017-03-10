@@ -12,20 +12,11 @@ describe('Radio', () => {
     )
   })
 
-  it('should render radio without text', () => {
+  it('should render radio', () => {
     expect(component).not.toBeNull()
-    expect(component.find(Input)).toHaveLength(1)
-    expect(component.find(Label)).toHaveLength(0)
-  })
-
-  it('should render radio with text', () => {
-    component.setProps({
-      children: 'Option 1',
-    })
-
-    expect(component).not.toBeNull()
-    expect(component.find(Input)).toHaveLength(1)
     expect(component.find(Label)).toHaveLength(1)
+    expect(component.find(Input)).toHaveLength(1)
+    expect(component.find(Input).text()).toBe('')
   })
 
   it('should render unchecked radio', () => {
@@ -43,8 +34,8 @@ describe('Radio', () => {
     const handleClick = jest.fn()
 
     component.setProps({
-      id: '123',
       onClick: handleClick,
+      value: '123',
     })
 
     expect(handleClick).not.toHaveBeenCalled()

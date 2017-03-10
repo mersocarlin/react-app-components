@@ -8,9 +8,9 @@ const RadioGroup = ({ items, name, onChange, value }) => (
       <Radio
         key={item.id}
         checked={item.id === value}
-        id={item.id}
         name={name}
-        onClick={id => onChange && id !== value && onChange(id)}
+        onClick={newValue => onChange && newValue !== value && onChange(newValue)}
+        value={item.id}
       >
         {item.text}
       </Radio>

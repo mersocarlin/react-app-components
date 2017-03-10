@@ -4,27 +4,28 @@ import { compose, withHandlers } from 'recompose'
 import Input from './Input'
 import Label from '../Label'
 
-const Radio = ({ checked, children, name = 'radio', ...rest }) => (
+const Radio = ({ checked, children, name = 'radio', value, ...rest }) => (
   <div {...rest}>
-    <Input
-      checked={checked}
-      name={name}
-      type="radio"
-    />
-    { children && (
-      <Label>{children}</Label>
-    ) }
+    <Label>
+      <Input
+        checked={checked}
+        name={name}
+        type="radio"
+        value={value}
+      />
+      { children }
+    </Label>
   </div>
 )
 
 export default compose(
   withHandlers({
-    onClick: ({ id, onClick }) => (ev) => {
+    onClick: ({ value, onClick }) => (ev) => {
       if (!onClick) {
         return
       }
 
-      onClick(id, ev)
+      onClick(value, ev)
     },
   }),
 )(Radio)

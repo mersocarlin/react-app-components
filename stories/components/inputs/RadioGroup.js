@@ -20,7 +20,7 @@ const RadioGroupWithState = compose(
         text: 'Option 3',
       }]}
       name="radio-group"
-      onChange={id => setValue(id)}
+      onChange={newValue => setValue(newValue)}
       value={value}
     />
   ),
