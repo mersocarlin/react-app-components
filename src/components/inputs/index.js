@@ -1,5 +1,6 @@
 export Checkbox from './Checkbox'
 export CheckboxGroup from './CheckboxGroup'
+export DatePicker from './DatePicker'
 export Input from './Input'
 export Radio from './Radio'
 export RadioGroup from './RadioGroup'
