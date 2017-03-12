@@ -22,7 +22,7 @@
     "react-datepicker": "^0.41.1",
     "react-dom": "^15.4.2",
     "react-intl": "^2.2.3",
-    "react-select": "^0.9.1"
+    "react-select": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",

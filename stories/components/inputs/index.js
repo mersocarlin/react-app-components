@@ -3,6 +3,7 @@ import CheckboxGroup from './CheckboxGroup'
 import DatePicker from './DatePicker'
 import Radio from './Radio'
 import RadioGroup from './RadioGroup'
+import Select from './Select'
 import Text from './Text'
 
 export default () => {
@@ -11,5 +12,6 @@ export default () => {
   DatePicker()
   Radio()
   RadioGroup()
+  Select()
   Text()
 }
