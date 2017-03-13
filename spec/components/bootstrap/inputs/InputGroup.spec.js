@@ -17,7 +17,7 @@ describe('InputGroup', () => {
   it('should render default InputGroup component', () => {
     expect(component).not.toBeNull()
 
-    expect(component.find(Text)).not.toBeNull()
+    expect(component.find(Text)).toHaveLength(1)
     expect(component.find('.input-group-addon')).toHaveLength(0)
   })
 
