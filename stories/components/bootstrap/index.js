@@ -1,5 +1,5 @@
-import InputGroup from './InputGroup'
+import inputs from './inputs'
 
 export default () => {
-  InputGroup()
+  inputs()
 }

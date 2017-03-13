@@ -1,1 +1,1 @@
-export InputGroup from './InputGroup'
+export * from './inputs'

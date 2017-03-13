@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import { InputGroup, Text } from '../../../src'
+import { Icon, InputGroup, Text } from '../../../../src'
 
 describe('InputGroup', () => {
   let component 
@@ -23,10 +23,11 @@ describe('InputGroup', () => {
 
   it('should render InputGroup with a left addon', () => {
     component.setProps({
-      leftAddon: '@',
+      leftAddon: <Icon icon="code" />,
     })
 
     expect(component.find('.input-group-addon')).toHaveLength(1)
+    expect(component.find(Icon)).toHaveLength(1)
   })
 
   it('should render InputGroup with a right addon', () => {
