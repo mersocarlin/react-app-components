@@ -1,6 +1,7 @@
+lib
+lib-es6
 node_modules
-bower_components
+
 .DS_Store
 *.log
-/examples/build
-/dist
+
