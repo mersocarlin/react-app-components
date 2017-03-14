@@ -4,7 +4,7 @@ import { storiesOf } from '@kadira/storybook'
 
 import { DatePicker } from '../../../src'
 
-const DatePickerWithState = compose(
+export const DatePickerWithState = compose(
   withState('value', 'setValue', props => props.value),
 )(
   ({ value, setValue, ...props }) => (
@@ -14,7 +14,7 @@ const DatePickerWithState = compose(
       value={value}
       onChange={newValue => setValue(newValue)}
     />
-  )
+  ),
 )
 
 export default () => {

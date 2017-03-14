@@ -1,20 +1,8 @@
 import React from 'react'
-import { compose, withState } from 'recompose'
 import { storiesOf } from '@kadira/storybook'
 
-import { Icon, InputGroup, Text } from '../../../../src'
-
-const TextWithState = compose(
-  withState('value', 'setValue', props => props.value),
-)(
-  ({ value, setValue, ...props }) => (
-    <Text
-      {...props}
-      value={value}
-      onChange={newValue => setValue(newValue)}
-    />
-  ),
-)
+import { Icon, InputGroup } from '../../../../src'
+import { TextWithState } from '../../inputs/Text'
 
 export default () => {
   storiesOf('Bootstrap > InputGroup', module)

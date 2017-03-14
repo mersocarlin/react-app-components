@@ -4,7 +4,7 @@ import { storiesOf } from '@kadira/storybook'
 
 import { Select } from '../../../src'
 
-const SelectWithState = compose(
+export const SelectWithState = compose(
   withState('value', 'setValue', props => props.value),
 )(
   ({ value, setValue, ...rest }) => (
