@@ -1,4 +1,4 @@
-# react-app-components [![Build Status][build-badge]][build-url]
+# react-app-components [![Build Status][build-badge]][build-url] [![npm version][npm-badge]][npm-url]
 
 Basic UI react components. Easy to plug, easy to use and easy to code!
 
@@ -24,5 +24,7 @@ yarn start # starts storybook
 
 Then open [http://localhost:6006/](http://localhost:6006/) to check the storybook
 
-[build-badge]: https://travis-ci.org/mersocarlin/react-app-components.svg?branch=master
+[build-badge]: https://travis-ci.org/mersocarlin/react-app-components.svg
 [build-url]: https://travis-ci.org/mersocarlin/react-app-components
+[npm-badge]: https://badge.fury.io/js/react-app-components.svg
+[npm-url]: https://badge.fury.io/js/react-app-components
