@@ -4,7 +4,8 @@ module.exports = {
   "plugins": [
       "react",
       "jsx-a11y",
-      "import"
+      "import",
+      "jest"
   ],
   "rules": {
     "strict": 0,
