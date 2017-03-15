@@ -15,7 +15,7 @@
     "transpile:es5": "cross-env NODE_ENV=production BABEL_ENV=es5 babel src --out-dir lib --copy-files",
     "transpile:es6": "cross-env NODE_ENV=production BABEL_ENV=es6 babel src --out-dir lib-es6 --copy-files"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mersocarlin/react-app-components"
