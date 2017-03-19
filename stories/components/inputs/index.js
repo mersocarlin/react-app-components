@@ -5,6 +5,7 @@ import Radio from './Radio'
 import RadioGroup from './RadioGroup'
 import Select from './Select'
 import Text from './Text'
+import Textarea from './Textarea'
 
 export default () => {
   Checkbox()
@@ -14,4 +15,5 @@ export default () => {
   RadioGroup()
   Select()
   Text()
+  Textarea()
 }
