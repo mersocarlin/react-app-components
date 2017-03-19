@@ -10,6 +10,14 @@ describe('Button', () => {
     component = mount(<Button>Click-me!</Button>)
   })
 
+  it('should accept custom className prop', () => {
+    component.setProps({
+      className: 'customButtonClass',
+    })
+
+    expect(component.find('a').props()).toHaveProperty('className', 'customButtonClass')
+  })
+
   it('should render default with <a> tag', () => {
     expect(component).not.toBeNull()
     expect(component.find('a')).toHaveLength(1)

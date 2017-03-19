@@ -19,6 +19,7 @@ export default () => {
         <Button asButton primary>
           <Icon icon="hand-spock-o" /> With Icon
         </Button><br />
+        <Button className="customCssClass">Custom css class.</Button><br />
       </div>
     ))
 }
