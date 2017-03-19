@@ -18,6 +18,16 @@ describe('Text', () => {
     expect(props).toHaveProperty('type', 'text')
   })
 
+  it('should render input type email', () => {
+    component.setProps({
+      type: 'email',
+    })
+
+    const props = component.props()
+
+    expect(props).toHaveProperty('type', 'email')
+  })
+
   it('should render input type password', () => {
     component.setProps({
       type: 'password',
