@@ -10,7 +10,10 @@ const Input = ({ onChange, type, ...rest }) => (
 
 Input.propTypes = {
   onChange: PropTypes.func,
-  type: PropTypes.oneOf(['checkbox', 'number', 'password', 'radio', 'text', 'url']),
+  type: PropTypes.oneOf([
+    'checkbox', 'email', 'number',
+    'password', 'radio', 'text', 'url',
+  ]),
 }
 
 export default Input

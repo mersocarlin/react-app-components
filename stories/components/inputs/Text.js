@@ -24,6 +24,13 @@ export default () => {
         value="Testing"
       />
     ))
+    .add('Email', () => (
+      <TextWithState
+        className="form-control"
+        value="me@me.com"
+        type="email"
+      />
+    ))
     .add('Password', () => (
       <TextWithState
         className="form-control"

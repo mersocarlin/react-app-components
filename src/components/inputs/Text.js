@@ -10,7 +10,7 @@ const Text = ({ type = 'text', ...rest }) => (
 )
 
 Text.propTypes = {
-  type: PropTypes.oneOf(['password', 'text', 'url']),
+  type: PropTypes.oneOf(['email', 'password', 'text', 'url']),
 }
 
 export default Text
