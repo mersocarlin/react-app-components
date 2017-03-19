@@ -24,7 +24,11 @@ const Button = ({
   )
 }
 
-const parseButtonType = ({ primary, secondary, success, info, warning, danger }) => {
+const parseButtonType = ({ className, primary, secondary, success, info, warning, danger }) => {
+  if (className) {
+    return className
+  }
+
   const baseClass = 'btn btn-'
   if (primary) {
     return `${baseClass}primary`
