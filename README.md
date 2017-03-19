@@ -12,6 +12,7 @@ Basic UI react components. Easy to plug, easy to use and easy to code!
 * [x] RadioGroup
 * [x] Select
 * [x] Text
+* [x] TextArea
 * [x] Icon (font-awesome)
 
 ## Quick Overview
