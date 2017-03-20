@@ -41,7 +41,24 @@ describe('DatePicker', () => {
     expect(componentProps.selected.format(format)).toBe(value)
   })
 
-  it('it should handle onChange', () => {
+  it('should skip if onChange is not defined', () => {
+    component.setProps({
+      value: '01/01/2001',
+    })
+
+    const expectedValue = '01/01/2017'
+
+    component
+      .find(ReactDatePicker)
+      .find('input')
+      .simulate('change', {
+        target: {
+          value: expectedValue,
+        },
+      })
+  })
+
+  it('it should handle onChange with valid date value', () => {
     const handleChange = jest.fn()
 
     component.setProps({
@@ -57,6 +74,29 @@ describe('DatePicker', () => {
       .simulate('change', {
         target: {
           value: expectedValue,
+        },
+      })
+
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).toHaveBeenCalledWith(expectedValue)
+  })
+
+  it('it should handle onChange with invalid date value', () => {
+    const handleChange = jest.fn()
+
+    component.setProps({
+      onChange: handleChange,
+      value: '01/01/2001',
+    })
+
+    const expectedValue = ''
+
+    component
+      .find(ReactDatePicker)
+      .find('input')
+      .simulate('change', {
+        target: {
+          value: '',
         },
       })
 
