@@ -57,12 +57,36 @@ describe('Select', () => {
     expect(componentProps).toHaveProperty('value', [1, 2])
   })
 
+  it('should skip if onChange is not defined', () => {
+    component.setProps({
+      value: 1,
+    })
+
+    component.find(ReactSelect).find('input').simulate('change', { target: { value: 'Option 2' } })
+    component.find(ReactSelect).find('input').simulate('keyDown', { keyCode: 13, key: 'Enter' })
+  })
+
+  it('should not trigger onChange is value has not been changed', () => {
+    const handleChange = jest.fn()
+    component.setProps({
+      onChange: handleChange,
+      value: 1,
+    })
+
+    expect(handleChange).not.toHaveBeenCalled()
+
+    component.find(ReactSelect).find('input').simulate('change', { target: { value: 'Option 1' } })
+    component.find(ReactSelect).find('input').simulate('keyDown', { keyCode: 13, key: 'Enter' })
+
+    expect(handleChange).not.toHaveBeenCalled()
+  })
+
   it('should handle onChange', () => {
     const handleChange = jest.fn()
 
     component.setProps({
       onChange: handleChange,
-      value: '1',
+      value: 1,
     })
 
     expect(handleChange).not.toHaveBeenCalled()
@@ -79,7 +103,7 @@ describe('Select', () => {
 
     component.setProps({
       onInputChange: handleInputChange,
-      value: '1',
+      value: 1,
     })
 
     expect(handleInputChange).not.toHaveBeenCalled()

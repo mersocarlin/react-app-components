@@ -38,12 +38,20 @@ describe('CheckboxGroup', () => {
 
   it('should set second and third <Checkbox /> as checked', () => {
     component.setProps({
-      value: [2,3],
+      value: [2, 3],
     })
 
     expect(component.find(Checkbox).at(0).props()).toHaveProperty('checked', false)
     expect(component.find(Checkbox).at(1).props()).toHaveProperty('checked', true)
     expect(component.find(Checkbox).at(2).props()).toHaveProperty('checked', true)
+  })
+
+  it('should skip if onChange is not defined', () => {
+    component.setProps({
+      value: [1],
+    })
+
+    component.find(Checkbox).at(2).simulate('click')
   })
 
   it('should handle onChange', () => {

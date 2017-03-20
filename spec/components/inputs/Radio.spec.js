@@ -30,6 +30,14 @@ describe('Radio', () => {
     expect(component.find(Input).props()).toHaveProperty('checked', true)
   })
 
+  it('should skip if onClick is not defined', () => {
+    component.setProps({
+      value: '123',
+    })
+
+    component.simulate('click')
+  })
+
   it('should handle onClick', () => {
     const handleClick = jest.fn()
 
