@@ -4,5 +4,4 @@ node_js:
   - 6
   - 7
 script:
-  - yarn
   - yarn run coverage
