@@ -1,8 +1,8 @@
 import React from 'react'
-import { compose, withHandlers, withProps } from 'recompose'
+import { compose, mapProps, withHandlers, withProps } from 'recompose'
 
-const Icon = ({ fw, icon, onClick, size }) => (
-  <i className={`fa fa-${icon}${fw}${size}`} onClick={onClick} />
+const Icon = ({ fw, icon, size, ...rest }) => (
+  <i className={`fa fa-${icon}${fw}${size}`} {...rest} />
 )
 
 export default compose(
@@ -15,6 +15,12 @@ export default compose(
       (x4 && ' fa-4x') ||
       (x5 && ' fa-5x')
     ),
+  })),
+  mapProps(({ fw, icon, onClick, size }) => ({
+    fw,
+    icon,
+    onClick,
+    size,
   })),
   withHandlers({
     onClick: ({ onClick }) => () => {
