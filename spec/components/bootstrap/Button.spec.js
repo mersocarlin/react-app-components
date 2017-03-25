@@ -120,6 +120,39 @@ describe('Button', () => {
     expect(props).toHaveProperty('className', 'btn btn-link')
   })
 
+  it('should render primary lg button', () => {
+    component.setProps({
+      primary: true,
+      lg: true,
+    })
+
+    const props = component.find('a').props()
+
+    expect(props).toHaveProperty('className', 'btn btn-lg btn-primary')
+  })
+
+  it('should render primary sm button', () => {
+    component.setProps({
+      primary: true,
+      sm: true,
+    })
+
+    const props = component.find('a').props()
+
+    expect(props).toHaveProperty('className', 'btn btn-sm btn-primary')
+  })
+
+  it('should render primary xs button', () => {
+    component.setProps({
+      primary: true,
+      xs: true,
+    })
+
+    const props = component.find('a').props()
+
+    expect(props).toHaveProperty('className', 'btn btn-xs btn-primary')
+  })
+
   it('should handle onClick', () => {
     const handleClick = jest.fn()
 

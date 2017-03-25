@@ -16,6 +16,9 @@ export default () => {
         <Button asButton danger>Danger</Button><br />
         <Button asButton link>Link</Button><br />
         <Button asButton primary disabled>Disabled</Button><br />
+        <Button asButton primary lg>lg Button</Button><br />
+        <Button asButton primary sm>sm Button</Button><br />
+        <Button asButton primary xs>xs Button (Bootstrap v3 only)</Button><br />
         <Button asButton primary>
           <Icon icon="hand-spock-o" /> With Icon
         </Button><br />

@@ -24,12 +24,33 @@ const Button = ({
   )
 }
 
-const parseButtonType = ({ className, primary, secondary, success, info, warning, danger }) => {
-  if (className) {
-    return className
+const parseButtonSize = ({ lg, sm, xs }) => {
+  if (lg) {
+    return ' btn-lg'
   }
 
-  const baseClass = 'btn btn-'
+  if (sm) {
+    return ' btn-sm'
+  }
+
+  if (xs) {
+    return ' btn-xs'
+  }
+
+  return ''
+}
+
+const parseButtonType = (props) => {
+  const {
+    primary,
+    secondary,
+    success,
+    info,
+    warning,
+    danger,
+  } = props
+
+  const baseClass = ' btn-'
   if (primary) {
     return `${baseClass}primary`
   }
@@ -57,15 +78,32 @@ const parseButtonType = ({ className, primary, secondary, success, info, warning
   return `${baseClass}link`
 }
 
+const parseButtonCssClass = ({ className, ...rest }) => {
+  if (className) {
+    return className
+  }
+
+  const size = parseButtonSize(rest)
+  const type = parseButtonType(rest)
+
+  return `btn${size}${type}`
+}
+
 export default compose(
   withProps(props => ({
-    className: parseButtonType(props),
+    className: parseButtonCssClass(props),
   })),
   mapProps(({ children, className, aTag, asButton, ...rest }) => ({
     children,
     className,
     aTag,
     asButton,
-    ...omit(rest, ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link']),
+    ...omit(
+      rest,
+      [
+        'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link',
+        'lg', 'sm', 'xs',
+      ],
+    ),
   })),
 )(Button)
