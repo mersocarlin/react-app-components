@@ -1,8 +1,8 @@
 import React from 'react'
-import { compose, withProps } from 'recompose'
+import { compose, withHandlers, withProps } from 'recompose'
 
-const Icon = ({ fw, icon, size }) => (
-  <i className={`fa fa-${icon}${fw}${size}`} />
+const Icon = ({ fw, icon, onClick, size }) => (
+  <i className={`fa fa-${icon}${fw}${size}`} onClick={onClick} />
 )
 
 export default compose(
@@ -16,4 +16,13 @@ export default compose(
       (x5 && ' fa-5x')
     ),
   })),
+  withHandlers({
+    onClick: ({ onClick }) => () => {
+      if (!onClick) {
+        return
+      }
+
+      onClick()
+    },
+  }),
 )(Icon)

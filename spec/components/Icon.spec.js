@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 
 import { Icon } from '../../src'
 
@@ -7,13 +7,13 @@ describe('Icon', () => {
   let component 
 
   beforeEach(() => {
-    component = shallow(<Icon icon="code" />)
+    component = mount(<Icon icon="code" />)
   })
 
   it('should render fa-code icon', () => {
     expect(component).not.toBeNull()
 
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code')
   })
@@ -22,7 +22,7 @@ describe('Icon', () => {
     component.setProps({
       fw: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-fw')
   })
@@ -31,7 +31,7 @@ describe('Icon', () => {
     component.setProps({
       lg: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-lg')
   })
@@ -40,7 +40,7 @@ describe('Icon', () => {
     component.setProps({
       x2: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-2x')
   })
@@ -49,7 +49,7 @@ describe('Icon', () => {
     component.setProps({
       x3: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-3x')
   })
@@ -58,7 +58,7 @@ describe('Icon', () => {
     component.setProps({
       x4: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-4x')
   })
@@ -67,7 +67,7 @@ describe('Icon', () => {
     component.setProps({
       x5: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-5x')
   })
@@ -77,7 +77,7 @@ describe('Icon', () => {
       x2: true,
       x5: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-2x')
   })
@@ -87,7 +87,7 @@ describe('Icon', () => {
       fw: true,
       lg: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-fw fa-lg')
   })
@@ -97,7 +97,7 @@ describe('Icon', () => {
       fw: true,
       x2: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-fw fa-2x')
   })
@@ -107,7 +107,7 @@ describe('Icon', () => {
       fw: true,
       x3: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-fw fa-3x')
   })
@@ -117,7 +117,7 @@ describe('Icon', () => {
       fw: true,
       x4: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-fw fa-4x')
   })
@@ -127,8 +127,28 @@ describe('Icon', () => {
       fw: true,
       x5: true,
     })
-    const props = component.props()
+    const props = component.find('i').props()
 
     expect(props.className.trim()).toBe('fa fa-code fa-fw fa-5x')
+  })
+
+  it('should skip if onClick is not defined', () => {
+    component.setProps({
+      value: '123',
+    })
+
+    component.find('i').simulate('click')
+  })
+
+  it('should handle onClick', () => {
+    const handleClick = jest.fn()
+
+    component.setProps({
+      onClick: handleClick,
+    })
+
+    expect(handleClick).not.toHaveBeenCalled()
+    component.find('i').simulate('click')
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })
