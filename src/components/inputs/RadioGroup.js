@@ -2,8 +2,8 @@ import React from 'react'
 
 import Radio from './Radio'
 
-const RadioGroup = ({ items, name, onChange, value }) => (
-  <div>
+const RadioGroup = ({ items, name, onChange, value, ...rest }) => (
+  <div {...rest}>
     {items.map(item => (
       <Radio
         key={item.id}

@@ -9,6 +9,7 @@ describe('RadioGroup', () => {
   beforeEach(() => {
     component = mount(
       <RadioGroup
+        className="custom-radio-group"
         items={[{
           id: 1,
           text: 'Option 1',
