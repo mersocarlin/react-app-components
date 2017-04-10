@@ -1,108 +1,65 @@
 import React from 'react'
 import { compose, mapProps, withProps } from 'recompose'
-import { omit } from 'lodash'
+import { compact, omit } from 'lodash'
 
-const Button = ({
-  children,
-  className,
-  aTag,
-  asButton,
-  ...rest
-}) => {
+const Button = ({ children, asButton, ...rest }) => {
   const ButtonTag = (
     (asButton && 'button') ||
     'a'
   )
 
   return (
-    <ButtonTag
-      className={className}
-      {...rest}
-    >
+    <ButtonTag {...rest}>
       {children}
     </ButtonTag>
   )
 }
 
-const parseButtonSize = ({ lg, sm, xs }) => {
-  if (lg) {
-    return ' btn-lg'
-  }
+const parseButtonSize = ({ lg, sm, xs }) => (
+  (lg && 'btn-lg') ||
+  (sm && 'btn-sm') ||
+  (xs && 'btn-xs') ||
+  ''
+)
 
-  if (sm) {
-    return ' btn-sm'
-  }
+const parseButtonType = ({
+  primary,
+  secondary,
+  success,
+  info,
+  warning,
+  danger,
+  link,
+}) => (
+  (primary && 'btn-primary') ||
+  (secondary && 'btn-secondary') ||
+  (success && 'btn-success') ||
+  (info && 'btn-info') ||
+  (warning && 'btn-warning') ||
+  (danger && 'btn-danger') ||
+  (link && 'btn-link') ||
+  ''
+)
 
-  if (xs) {
-    return ' btn-xs'
-  }
-
-  return ''
-}
-
-const parseButtonType = (props) => {
-  const {
-    primary,
-    secondary,
-    success,
-    info,
-    warning,
-    danger,
-  } = props
-
-  const baseClass = ' btn-'
-  if (primary) {
-    return `${baseClass}primary`
-  }
-
-  if (secondary) {
-    return `${baseClass}secondary`
-  }
-
-  if (success) {
-    return `${baseClass}success`
-  }
-
-  if (info) {
-    return `${baseClass}info`
-  }
-
-  if (warning) {
-    return `${baseClass}warning`
-  }
-
-  if (danger) {
-    return `${baseClass}danger`
-  }
-
-  return `${baseClass}link`
-}
-
-const parseButtonCssClass = ({ className, ...rest }) => {
-  if (className) {
-    return className
-  }
-
-  const size = parseButtonSize(rest)
-  const type = parseButtonType(rest)
-
-  return `btn${size}${type}`
-}
+const parseButtonCssClass = ({ className, ...rest }) => (
+  compact([
+    'btn',
+    parseButtonSize(rest),
+    parseButtonType(rest),
+    className || '',
+  ]).join(' ')
+)
 
 export default compose(
   withProps(props => ({
     className: parseButtonCssClass(props),
   })),
-  mapProps(({ children, className, aTag, asButton, ...rest }) => ({
-    children,
-    className,
-    aTag,
-    asButton,
+  mapProps(props => ({
     ...omit(
-      rest,
+      props,
       [
         'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link',
-        'lg', 'sm', 'xs',
+        'lg', 'sm', 'xs', 'aTag',
       ],
     ),
   })),
