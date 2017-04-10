@@ -15,7 +15,7 @@ describe('Button', () => {
       className: 'customButtonClass',
     })
 
-    expect(component.find('a').props()).toHaveProperty('className', 'customButtonClass')
+    expect(component.find('a').props()).toHaveProperty('className', 'btn customButtonClass')
   })
 
   it('should render default with <a> tag', () => {
@@ -29,6 +29,7 @@ describe('Button', () => {
     })
 
     expect(component.find('a')).toHaveLength(1)
+    expect(component.find('button')).toHaveLength(0)
   })
 
   it('should render as <button> tag', () => {
@@ -36,6 +37,7 @@ describe('Button', () => {
       asButton: true,
     })
 
+    expect(component.find('a')).toHaveLength(0)
     expect(component.find('button')).toHaveLength(1)
   })
 
@@ -47,6 +49,15 @@ describe('Button', () => {
     const props = component.find('a').props()
 
     expect(props).toHaveProperty('className', 'btn btn-primary')
+  })
+
+  it('should render Primary button with extra className prop', () => {
+    component.setProps({
+      className: 'customButtonClass',
+      primary: true,
+    })
+
+    expect(component.find('a').props()).toHaveProperty('className', 'btn btn-primary customButtonClass')
   })
 
   it('should render Primary if more than one type os specified', () => {
@@ -151,6 +162,18 @@ describe('Button', () => {
     const props = component.find('a').props()
 
     expect(props).toHaveProperty('className', 'btn btn-xs btn-primary')
+  })
+
+  it('should render primary xs button with custom className prop', () => {
+    component.setProps({
+      className: 'customButtonClass',
+      primary: true,
+      xs: true,
+    })
+
+    const props = component.find('a').props()
+
+    expect(props).toHaveProperty('className', 'btn btn-xs btn-primary customButtonClass')
   })
 
   it('should handle onClick', () => {

@@ -19,7 +19,6 @@ describe('CheckboxGroup', () => {
           id: 3,
           text: 'Option 3',
         }]}
-        value={[]}
       />,
     )
   })

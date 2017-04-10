@@ -20,10 +20,11 @@ const CheckboxGroup = ({ items, onClick, value = [] }) => (
 
 export default compose(
   withHandlers({
-    onClick: ({ value, onChange }) => (selectedValue) => {
+    onClick: ({ onChange, value = [] }) => (selectedValue) => {
       if (!onChange) {
         return
       }
+
       const idx = value.indexOf(selectedValue)
 
       if (idx >= 0) {
