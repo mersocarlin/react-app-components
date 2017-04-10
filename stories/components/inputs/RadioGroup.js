@@ -7,7 +7,7 @@ import { RadioGroup } from '../../../src'
 const RadioGroupWithState = compose(
   withState('value', 'setValue', props => props.value),
 )(
-  ({ value, setValue }) => (
+  ({ value, setValue, ...rest }) => (
     <RadioGroup
       items={[{
         id: 1,
@@ -22,6 +22,7 @@ const RadioGroupWithState = compose(
       name="radio-group"
       onChange={newValue => setValue(newValue)}
       value={value}
+      {...rest}
     />
   ),
 )
