@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@kadira/storybook'
+import { boolean } from '@kadira/storybook-addon-knobs'
 
 import { FormGroup, Icon, InputGroup, Label } from '../../../../src'
 import { DatePickerWithState } from '../../inputs/DatePicker'
@@ -10,7 +11,11 @@ export default () => {
   storiesOf('Bootstrap > FormGroup', module)
     .add('Default', () => (
       <FormGroup
-        label={<Label>Name</Label>}
+        hasDanger={boolean('has-danger')}
+        hasError={boolean('has-error')}
+        hasSuccess={boolean('has-success')}
+        hasWarning={boolean('has-warning')}
+        label={<Label className="form-control-label">Name</Label>}
         input={
           <TextWithState
             className="form-control"

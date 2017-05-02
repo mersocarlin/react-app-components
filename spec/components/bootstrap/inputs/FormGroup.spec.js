@@ -20,6 +20,7 @@ describe('FormGroup', () => {
 
     expect(component.find(Label)).toHaveLength(1)
     expect(component.find(Text)).toHaveLength(1)
+    expect(component.hasClass('has-danger')).toBeFalsy()
   })
 
   it('should render FormGroup without label', () => {
@@ -36,5 +37,39 @@ describe('FormGroup', () => {
     })
 
     expect(component.find(Text)).toHaveLength(0)
+  })
+
+  describe('validation', () => {
+    it('should render has-danger css class', () => {
+      component.setProps({
+        hasDanger: true,
+      })
+
+      expect(component.hasClass('has-danger')).toBeTruthy()
+    })
+
+    it('should render has-error css class', () => {
+      component.setProps({
+        hasError: true,
+      })
+
+      expect(component.hasClass('has-error')).toBeTruthy()
+    })
+
+    it('should render has-success css class', () => {
+      component.setProps({
+        hasSuccess: true,
+      })
+
+      expect(component.hasClass('has-success')).toBeTruthy()
+    })
+
+    it('should render has-warning css class', () => {
+      component.setProps({
+        hasWarning: true,
+      })
+
+      expect(component.hasClass('has-warning')).toBeTruthy()
+    })
   })
 })
