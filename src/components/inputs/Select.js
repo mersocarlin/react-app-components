@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose, withProps, withHandlers } from 'recompose'
 import ReactSelect from 'react-select'
-import _ from 'lodash'
+import { isArray, isEqual } from 'lodash'
 
 import 'react-select/dist/react-select.css'
 
@@ -31,12 +31,12 @@ export default compose(
       }
 
       const newValueId = (
-        _.isArray(newValue) ?
+        isArray(newValue) ?
           newValue.map(v => v.id) :
           newValue.id
       )
 
-      if (_.isEqual(value, newValueId)) {
+      if (isEqual(value, newValueId)) {
         return
       }
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import _ from 'lodash'
+import { isArray } from 'lodash'
 
 const InputGroup = ({ children, leftAddon, rightAddon }) => (
   <div className="input-group">
     {leftAddon && (
-      (_.isArray(leftAddon) ? leftAddon : [leftAddon]).map((addon, index) => (
+      (isArray(leftAddon) ? leftAddon : [leftAddon]).map((addon, index) => (
         <span key={index} className="input-group-addon">
           {addon}
         </span>
@@ -12,7 +12,7 @@ const InputGroup = ({ children, leftAddon, rightAddon }) => (
     )}
     {children}
     {rightAddon && (
-      (_.isArray(rightAddon) ? rightAddon : [rightAddon]).map((addon, index) => (
+      (isArray(rightAddon) ? rightAddon : [rightAddon]).map((addon, index) => (
         <span key={index} className="input-group-addon">
           {addon}
         </span>
