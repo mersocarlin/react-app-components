@@ -1,6 +1,7 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { storiesOf } from '@kadira/storybook'
+import { boolean } from '@kadira/storybook-addon-knobs'
 
 import { Text } from '../../../src'
 
@@ -21,6 +22,8 @@ export default () => {
     .add('Default', () => (
       <TextWithState
         className="form-control"
+        lowercase={boolean('lowercase')}
+        uppercase={boolean('uppercase')}
         value="Testing"
       />
     ))

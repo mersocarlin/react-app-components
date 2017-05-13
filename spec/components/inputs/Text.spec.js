@@ -1,19 +1,19 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 
-import { Text } from '../../../src'
+import { Input, Text } from '../../../src'
 
 describe('Text', () => {
   let component
 
   beforeEach(() => {
-    component = shallow(<Text />)
+    component = mount(<Text />)
   })
 
   it('should render default Text component', () => {
     expect(component).not.toBeNull()
 
-    const props = component.props()
+    const props = component.find(Input).props()
 
     expect(props).toHaveProperty('type', 'text')
   })
@@ -46,5 +46,33 @@ describe('Text', () => {
     const props = component.props()
 
     expect(props).toHaveProperty('type', 'url')
+  })
+
+  it('should handle uppercase text', () => {
+    const handleChange = jest.fn()
+
+    component.setProps({
+      onChange: handleChange,
+      uppercase: true,
+    })
+
+    const event = { target: { value: 'uppercase text' } }
+    component.simulate('change', event)
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange.mock.calls[0][0]).toBe('UPPERCASE TEXT')
+  })
+
+  it('should handle lowercase text', () => {
+    const handleChange = jest.fn()
+
+    component.setProps({
+      onChange: handleChange,
+      lowercase: true,
+    })
+
+    const event = { target: { value: 'LOWERCASE TEXT' } }
+    component.simulate('change', event)
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange.mock.calls[0][0]).toBe('lowercase text')
   })
 })

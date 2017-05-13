@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Input = ({ onChange, type, ...rest }) => (
+const Input = ({ onChange, ...rest }) => (
   <input
-    onChange={ev => onChange && onChange(ev.target.value, ev)}
-    type={type}
+    onChange={event => onChange && onChange(event.target.value, event)}
     {...rest}
   />
 )
